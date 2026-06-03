@@ -14,6 +14,24 @@ app.get("/", async function (req, res) {
   res.render("index.liquid");
 });
 
+app.get("/form", async function (req, res) {
+  const params = {};
+
+  res.render("form.liquid");
+});
+
+app.get("/:city", async function (req, res) {
+  const params = {};
+
+  res.render("city.liquid");
+});
+
+app.get("/:city/:adress", async function (req, res) {
+  const params = {};
+
+  res.render("detail.liquid");
+});
+
 app.set("port", process.env.PORT || 8000);
 
 app.listen(app.get("port"), function () {
