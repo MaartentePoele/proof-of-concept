@@ -1,7 +1,16 @@
 {% include 'partials/head.liquid' %}
 {% include 'partials/nav.liquid' %}
-      <section>
-        Overzicht van steden
-      </section>
+      <div class="dashboard-boxes">
+        <div class="dashboard-box"><p><span>40</span>Smart zones</p></div>
+        <div class="dashboard-box"><p><span>5</span>Steden</p></div>
+        <div class="dashboard-box"><p><span>41%</span>in gebruik</p></div>
+      </div>
+      <nav class="city-nav">
+        <a href="/Amsterdam">Amsterdam</a>
+        <a href="/Rotterdam">Rotterdam</a>
+        <a href="/Den-Haag">Den Haag</a>
+        <a href="/Utrecht">Utrecht</a>
+        <a href="/s-Hertogenbosch">s-Hertogenbosch</a>
+      </nav>
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}
