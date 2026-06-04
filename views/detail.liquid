@@ -1,11 +1,40 @@
 {% include 'partials/head.liquid' %}
-      <section>
-        Stad
-        Straat
-        Afbeelding
-        Coordinaten
+<main class="detail-main">
+  <a class="back" href="/">← Terug</a>
 
-        extra info
-      </section>
+  <div class="quickscan-detail-card">
+    <img src="/assets/images/tth.jpg" alt="">
+    <h1>Wibautstraat 2</h1>
+    <p>Amsterdam</p>
+  </div>
+
+  <table class="quickscan-table">
+    <tr class="table-row">
+      <td class="table-heading">Status</td>
+      <td class="table-detail"><span class="status-highlight">Available</span></td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-heading">Bord</td>
+      <td class="table-detail">Niet parkeren</td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-heading">Lengte</td>
+      <td class="table-detail">1200 cm</td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-heading">Tijd</td>
+      <td class="table-detail">16:54:00</td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-heading">Smartzone</td>
+      <td class="table-detail">Suitable</td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-heading">Monitoring</td>
+      <td class="table-detail">Very suitable</td>
+    </tr>
+  </table>
+</main>
+
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}

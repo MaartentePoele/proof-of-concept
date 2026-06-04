@@ -10,6 +10,16 @@
   --accent-light: color-mix(in oklab, var(--accent-color), #fff 65%);
   --accent-dark: color-mix(in oklab, var(--accent-color), #000 35%);
 
+  --status-occupied: #c62828;
+  --status-violation: #e65100;
+  --status-available: #2e7d32;
+  --status-invalid: #616161;
+
+  --text-dark-primary: oklch(5% 0 0);
+  --text-dark-secondary: oklch(25% 0 0);
+  --text-light-primary: oklch(95% 0 0);
+  --text-light-secondary: oklch(75% 0 0);
+
   --font-size-xs: 0.875rem;
   --font-size-s: 1rem;
   --font-size-m: 1.25rem;
