@@ -7,16 +7,25 @@
 
 :root {
   --accent-color: #555ba3;
-  --white: #fff;
+  --accent-light: color-mix(in oklab, var(--accent-color), #fff 65%);
+  --accent-dark: color-mix(in oklab, var(--accent-color), #000 35%);
 
+  --font-size-xs: 0.875rem;
   --font-size-s: 1rem;
   --font-size-m: 1.25rem;
   --font-size-l: 1.5rem;
   --font-size-xl: 2rem;
+
+  --shadow-primary:
+    inset 0 1px 2px oklch(100% 0 0 / 18.82%), 0 2px 4px oklch(0 0 0 / 18.82%),
+    0 4px 8px oklch(0 0 0 / 8.24%);
 }
 
-html {
-  max-width: 500px;
+body {
+  max-width: 300px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
 }
 
 a {

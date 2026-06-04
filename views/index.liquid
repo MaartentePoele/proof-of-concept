@@ -1,16 +1,40 @@
 {% include 'partials/head.liquid' %}
-{% include 'partials/nav.liquid' %}
-      <div class="dashboard-boxes">
-        <div class="dashboard-box"><p><span>40</span>Smart zones</p></div>
-        <div class="dashboard-box"><p><span>5</span>Steden</p></div>
-        <div class="dashboard-box"><p><span>41%</span>in gebruik</p></div>
-      </div>
+    <main>
+      <section class="dashboard">
+        <h1>Dashboard Nederland</h1>
+
+        <div class="dashboard-boxes">
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Smart zones</h2>
+            <span class="dashboard-box-value">40</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Steden</h2>
+            <span class="dashboard-box-value">5</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">In gebruik</h2>
+            <span class="dashboard-box-value">41%</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Quickscans</h2>
+            <span class="dashboard-box-value">15</span>
+          </div>
+        </div>
+      </section>
+
       <nav class="city-nav">
+        <h3 class="city-heading">Steden</h3>
         <a href="/Amsterdam">Amsterdam</a>
         <a href="/Rotterdam">Rotterdam</a>
         <a href="/Den-Haag">Den Haag</a>
         <a href="/Utrecht">Utrecht</a>
-        <a href="/s-Hertogenbosch">s-Hertogenbosch</a>
+        <a href="/%27s-Hertogenbosch">'s-Hertogenbosch</a>
       </nav>
+    </main>
+
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}

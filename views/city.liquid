@@ -1,8 +1,67 @@
 {% include 'partials/head.liquid' %}
-{% include 'partials/nav.liquid' %}
-      <section>
-        Stadnaam Kaart (eventueel) Blokjes met data (dashboard)
-        <a href="/Amsterdam/wibautstraat">Quickscans</a>
+    <main>
+      <section class="dashboard">
+        <h1>Dashboard Amsterdam</h1>
+
+        <div class="dashboard-boxes">
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Smart zones</h2>
+            <span class="dashboard-box-value">40</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Steden</h2>
+            <span class="dashboard-box-value">5</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">In gebruik</h2>
+            <span class="dashboard-box-value">41%</span>
+          </div>
+
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Quickscans</h2>
+            <span class="dashboard-box-value">15</span>
+          </div>
+        </div>
       </section>
+
+      <section class="quickscans">
+        <h3 class="quickscans-heading">Quickscans</h3>
+
+        <article>
+          <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
+          <h4 class="quickscan-heading">
+            <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
+          </h4>
+          <p class="quickscan-status">Bezet</p>
+        </article>
+
+        <article>
+          <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
+          <h4 class="quickscan-heading">
+            <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
+          </h4>
+          <p class="quickscan-status">Bezet</p>
+        </article>
+
+        <article>
+          <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
+          <h4 class="quickscan-heading">
+            <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
+          </h4>
+          <p class="quickscan-status">Bezet</p>
+        </article>
+
+        <article>
+          <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
+          <h4 class="quickscan-heading">
+            <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
+          </h4>
+          <p class="quickscan-status">Bezet</p>
+        </article>
+      </section>
+    </main>
+
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}
