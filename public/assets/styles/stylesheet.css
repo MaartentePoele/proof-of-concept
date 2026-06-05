@@ -30,6 +30,10 @@
     0 4px 8px oklch(0 0 0 / 8.24%);
 }
 
+html {
+  container-type: scroll-state;
+}
+
 body {
   max-width: 300px;
   display: flex;

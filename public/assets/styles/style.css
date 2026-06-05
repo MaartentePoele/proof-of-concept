@@ -7,6 +7,12 @@ header {
   top: 0;
   background-color: #fff;
   box-shadow: 0px 3px 15px rgb(0 0 0 / 20%);
+  translate: 0 0;
+  transition: translate 0.3s ease-out;
+
+  @container scroll-state(scrolled: bottom) {
+    translate: 0 -100%;
+  }
 
   img {
     width: 150px;
@@ -106,6 +112,7 @@ header {
     overflow: hidden;
     padding-bottom: 0.25rem;
     width: 130px;
+    position: relative;
 
     .quickscan-img {
       width: 100%;
@@ -117,6 +124,12 @@ header {
 
       a {
         color: var(--accent-color);
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+        }
       }
     }
 
