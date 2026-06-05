@@ -316,7 +316,7 @@ footer {
   box-shadow: 0px -3px 15px rgb(0 0 0 / 20%);
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem 2rem;
   position: sticky;
 
   a {

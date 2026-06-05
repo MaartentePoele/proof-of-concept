@@ -10,8 +10,24 @@ app.set("views", "./views");
 
 app.get("/", async function (req, res) {
   const params = {};
+  
+  const quickscanResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
+      new URLSearchParams(params),
+  );
+  const quickscanResponseJSON = await quickscanResponse.json();
+  const quickscanData = quickscanResponseJSON.data;
 
-  res.render("index.liquid");
+  const cityResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=city&groupBy=city",
+  );
+  const cityResponseJSON = await cityResponse.json();
+  const cityData = cityResponseJSON.data;
+
+  res.render("index.liquid", {
+    quickscans: quickscanData,
+    cities: cityData,
+  });
 });
 
 app.get("/quickscan", async function (req, res) {

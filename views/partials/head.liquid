@@ -22,10 +22,8 @@
       </button>
 
       <nav class="menu-nav">
-        <a href="/Amsterdam">Amsterdam</a>
-        <a href="/Rotterdam">Rotterdam</a>
-        <a href="/Den-Haag">Den Haag</a>
-        <a href="/Utrecht">Utrecht</a>
-        <a href="/%27s-Hertogenbosch">'s-Hertogenbosch</a>
+      {%- for city in cities %}
+        <a href="/{{ city.city }}">{{ city.city }}</a>
+      {%- endfor %}
       </nav>
     </header>
