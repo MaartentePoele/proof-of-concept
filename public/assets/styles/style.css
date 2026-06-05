@@ -81,6 +81,7 @@ header {
     }
   }
 }
+
 .quickscans {
   display: flex;
   flex-wrap: wrap;
@@ -122,6 +123,7 @@ header {
     }
   }
 }
+
 .city-nav {
   display: flex;
   flex-direction: column;
@@ -184,6 +186,7 @@ header {
     }
 
     .table-detail {
+      font-weight: bold;
       text-align: end;
       color: var(--text-dark-primary);
 
@@ -197,7 +200,6 @@ header {
 
     .table-heading,
     .table-detail {
-      font-weight: bold;
       border-bottom: 1px solid gray;
       padding: 0.75rem;
     }
@@ -214,6 +216,12 @@ header {
 .back {
   color: var(--accent-color);
   font-weight: bold;
+}
+
+.quickscan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 footer {

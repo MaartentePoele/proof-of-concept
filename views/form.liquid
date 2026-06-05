@@ -1,16 +1,38 @@
 {% include 'partials/head.liquid' %}
-      <section>
-        Stad
-        Adres
-        Coordinaten
-        Foto
-        Opmerkingen
-        Tijd
-        Lengte
-        Verkeersbord
-        Status
-        Monitoring suitability
-        Smartzone suitability
-      </section>
-    </main>
+<main>
+  <form class="quickscan-form">
+    <label for="foto">Foto</label>
+    <input type="file" id="foto">
+
+    <label for="status">Status</label>
+    <select id="status">
+
+    <label for="opmerkingen">Opmerkingen</label>
+    <textarea id="opmerkingen" rows="5"></textarea>
+
+    <label for="lengte">Lengte</label>
+    <input type="text" id="lengte">
+
+    <label for="verkeersbord">Verkeersbord</label>
+    <input type="text" id="verkeersbord">
+
+    <label for="monitoring">Geschiktheid monitoring</label>
+    <input type="text" id="monitoring">
+
+    <label for="smartzone">Geschiktheid Smartzone</label>
+    <input type="text" id="smartzone">
+
+    <label for="stad">Stad</label>
+    <input type="text" id="stad">
+
+    <label for="adres">Adres</label>
+    <input type="text" id="adres">
+
+    <label for="coordinaten">Coördinaten</label>
+    <input type="text" id="coordinaten">
+
+    <label for="tijd">Tijd</label>
+    <input type="time" id="tijd">
+  </form>
+</main>
 {% include 'partials/foot.liquid' %}
