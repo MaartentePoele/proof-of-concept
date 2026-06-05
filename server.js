@@ -14,7 +14,7 @@ app.get("/", async function (req, res) {
   res.render("index.liquid");
 });
 
-app.get("/form", async function (req, res) {
+app.get("/quickscan", async function (req, res) {
   const params = {};
 
   res.render("form.liquid");

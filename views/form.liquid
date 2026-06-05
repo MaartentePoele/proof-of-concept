@@ -6,33 +6,72 @@
 
     <label for="status">Status</label>
     <select id="status">
+      <option value="">--Kies een optie--</option>
+      <option value="vrij">Vrij</option>
+      <option value="bezet">Bezet</option>
+      <option value="overtreding">Overtreding</option>
+      <option value="bestaat niet">Bestaat niet</option>
+    </select>
 
-    <label for="opmerkingen">Opmerkingen</label>
-    <textarea id="opmerkingen" rows="5"></textarea>
+    <label for="comment">Opmerkingen</label>
+    <textarea id="comment" rows="5"></textarea>
 
-    <label for="lengte">Lengte</label>
-    <input type="text" id="lengte">
+    <label for="length">Lengte (cm)</label>
+    <input type="text" id="length">
 
-    <label for="verkeersbord">Verkeersbord</label>
-    <input type="text" id="verkeersbord">
+    <label for="traffic-sign">Verkeersbord</label>
+    <input type="text" id="traffing-sign">
 
-    <label for="monitoring">Geschiktheid monitoring</label>
-    <input type="text" id="monitoring">
+    <fieldset class="monitoring-fieldset">
+      <legend>Geschiktheid monitoring</legend>
+      <div>
+        <label>Geschikt<input type="radio" name="monitoring"></label>
+      </div>
+      <div>
+        <label>Neutraal<input type="radio" name="monitoring"></label>
+      </div>
+      <div>
+        <label>Ongeschikt<input type="radio" name="monitoring"></label>
+      </div>
+    </fieldset>
 
-    <label for="smartzone">Geschiktheid Smartzone</label>
-    <input type="text" id="smartzone">
+    <fieldset class="smartzone-fieldset">
+      <legend>Geschiktheid smartzone</legend>
+      <div>
+        <label>Geschikt<input type="radio" name="smartzone"></label>
+      </div>
+      <div>
+        <label>Neutraal<input type="radio" name="smartzone"></label>
+      </div>
+      <div>
+        <label>Ongeschikt<input type="radio" name="smartzone"></label>
+      </div>
+    </fieldset>
 
-    <label for="stad">Stad</label>
-    <input type="text" id="stad">
+    <label for="time">Tijd</label>
+    <input type="time" id="time">
 
-    <label for="adres">Adres</label>
-    <input type="text" id="adres">
+    <label for="city">Stad</label>
+    <input type="text" id="city">
 
-    <label for="coordinaten">Coördinaten</label>
-    <input type="text" id="coordinaten">
+    <label for="adress">Adres</label>
+    <input type="text" id="adress">
 
-    <label for="tijd">Tijd</label>
-    <input type="time" id="tijd">
+    <fieldset class="coordinates-fieldset">
+      <legend>Coördinaten</legend>
+
+      <label for="longitude"
+        >Lengtegraad:
+        <input type="number">
+      </label>
+
+      <label for="latitude"
+        >Breedtegraad:
+        <input type="number">
+      </label>
+    </fieldset>
+
+    <input class="submit-button" type="submit">
   </form>
 </main>
 {% include 'partials/foot.liquid' %}

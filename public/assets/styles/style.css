@@ -3,6 +3,10 @@ header {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0px 3px 15px rgb(0 0 0 / 20%);
 
   img {
     width: 150px;
@@ -180,29 +184,27 @@ header {
   border-radius: 1rem;
   border-collapse: collapse;
 
-  .table-row {
-    .table-heading {
-      color: var(--text-dark-secondary);
-    }
+  .table-heading {
+    color: var(--text-dark-secondary);
+  }
 
-    .table-detail {
-      font-weight: bold;
-      text-align: end;
-      color: var(--text-dark-primary);
+  .table-detail {
+    font-weight: bold;
+    text-align: end;
+    color: var(--text-dark-primary);
 
-      .status-highlight {
-        color: #fff;
-        background-color: var(--status-available);
-        padding: 0.25rem;
-        border-radius: 0.25rem;
-      }
+    .status-highlight {
+      color: #fff;
+      background-color: var(--status-available);
+      padding: 0.25rem;
+      border-radius: 0.25rem;
     }
+  }
 
-    .table-heading,
-    .table-detail {
-      border-bottom: 1px solid gray;
-      padding: 0.75rem;
-    }
+  .table-heading,
+  .table-detail {
+    border-bottom: 1px solid gray;
+    padding: 0.75rem;
   }
 
   .table-row:last-child {
@@ -221,7 +223,78 @@ header {
 .quickscan-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  padding: 1rem;
+
+  label,
+  legend {
+    padding-top: 1rem;
+    font-size: var(--font-size-m);
+    border: none;
+    color: var(--accent-dark);
+    font-weight: bold;
+  }
+
+  select,
+  input,
+  textarea {
+    border: 2px solid var(--accent-color);
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: var(--font-size-s);
+    width: 100%;
+  }
+
+  fieldset {
+    border: 0;
+
+    label {
+      font-size: var(--font-size-s);
+      font-weight: 400;
+      color: #000;
+    }
+  }
+
+  .monitoring-fieldset,
+  .smartzone-fieldset {
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      input {
+        width: fit-content;
+        margin-right: 5rem;
+        width: 1rem;
+        aspect-ratio: 1;
+      }
+    }
+  }
+
+  .coordinates-fieldset {
+    label {
+      font-size: var(--font-size-s);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+      padding-top: 0;
+    }
+
+    label:last-child {
+      padding-top: 0.25rem;
+    }
+  }
+
+  .submit-button {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--accent-color);
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 9rem;
+    font-size: var(--font-size-m);
+    padding: 0.5rem;
+  }
 }
 
 footer {
