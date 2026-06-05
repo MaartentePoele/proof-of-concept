@@ -28,9 +28,11 @@
 
       <nav class="city-nav">
         <h3 class="city-heading">Steden</h3>
-      {%- for city in cities %}
+    {%- for city in cities %}
+      {%- if city.city != null %}
         <a href="/{{ city.city }}">{{ city.city }}</a>
-      {%- endfor %}
+      {%- endif %}
+    {%- endfor %}
       </nav>
     </main>
 
