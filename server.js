@@ -33,15 +33,15 @@ app.post("/quickscan-post", async function (req, res) {
     method: "POST",
     body: JSON.stringify({
       comment: req.body.comment,
-      adress: req.body.adress,
+      address: req.body.address,
       // picture: req.body.picture,
       city: req.body.city,
       length: req.body.length,
-      // time: req.body.time,
+      time: req.body.time,
       monitoring_suitability: req.body.monitoring_suitability,
       status: req.body.status,
-      // long: req.body.long,
-      // lat: req.body.lat,
+      long: req.body.long,
+      lat: req.body.lat,
       smartzone_suitability: req.body.smartzone_suitability,
       traffic_sign: req.body.traffic_sign,
     }),
@@ -67,7 +67,7 @@ app.get("/:city", async function (req, res) {
   );
   const quickscanResponseJSON = await quickscanResponse.json();
   const quickscanData = quickscanResponseJSON.data;
-  console.log(quickscanData);
+  // console.log(quickscanData);
 
   res.render("city.liquid", {
     pathTitle: pathTitle,
