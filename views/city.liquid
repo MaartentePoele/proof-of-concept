@@ -1,7 +1,7 @@
 {% include 'partials/head.liquid' %}
 <main>
   <section class="dashboard">
-    <h1>Dashboard {{ currentPath }}</h1>
+    <h1>Dashboard {{ pathTitle }}</h1>
 
     <div class="dashboard-boxes">
       <div class="dashboard-box">
@@ -29,37 +29,30 @@
   <section class="quickscans">
     <h3 class="quickscans-heading">Quickscans</h3>
 
-    <article>
-      <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
-      <h4 class="quickscan-heading">
-        <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
-      </h4>
-      <p class="quickscan-status">Bezet</p>
-    </article>
-
-    <article>
-      <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
-      <h4 class="quickscan-heading">
-        <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
-      </h4>
-      <p class="quickscan-status">Bezet</p>
-    </article>
-
-    <article>
-      <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
-      <h4 class="quickscan-heading">
-        <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
-      </h4>
-      <p class="quickscan-status">Bezet</p>
-    </article>
-
-    <article>
-      <img class="quickscan-img" src="/assets/images/tth.jpg" alt="">
-      <h4 class="quickscan-heading">
-        <a href="/Amsterdam/wibautstraat">Wibautstraat 2</a>
-      </h4>
-      <p class="quickscan-status">Bezet</p>
-    </article>
+    {% for quickscan in quickscans %}
+      <article>
+        {% if quickscan.picture == null %}
+          <img src="/assets/images/fallback.png" alt="">
+        {% else %}
+          <img class="quickscan-img" src="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}" alt="">
+        {% endif %}
+        <h4 class="quickscan-heading">
+          <a href="/{{ quickscan.city }}/{{ quickscan.address }}">{{ quickscan.address }}</a>
+        </h4>
+        <p class="quickscan-status">
+          {{ quickscan.status }}
+          {% if quickscan.status == 'vrij' %}
+            <span style="background-color: var(--status-available)"></span>
+          {% elsif quickscan.status == 'bezet' %}
+            <span style="background-color: var(--status-occupied)"></span>
+          {% elsif quickscan.status == 'overtreding' %}
+            <span style="background-color: var(--status-violation)"></span>
+          {% else %}
+            <span style="background-color: var(--status-invalid)"></span>
+          {% endif %}
+        </p>
+      </article>
+    {% endfor %}
   </section>
 </main>
 

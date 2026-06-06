@@ -11,13 +11,6 @@ app.set("views", "./views");
 app.get("/", async function (req, res) {
   const params = {};
 
-  const quickscanResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
-      new URLSearchParams(params),
-  );
-  const quickscanResponseJSON = await quickscanResponse.json();
-  const quickscanData = quickscanResponseJSON.data;
-
   const cityResponse = await fetch(
     "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=city&groupBy=city",
   );
@@ -25,7 +18,6 @@ app.get("/", async function (req, res) {
   const cityData = cityResponseJSON.data;
 
   res.render("index.liquid", {
-    quickscans: quickscanData,
     cities: cityData,
   });
 });
@@ -63,12 +55,23 @@ app.post("/quickscan-post", async function (req, res) {
 });
 
 app.get("/:city", async function (req, res) {
-  const params = {};
+  const params = {
+    "filter[city][_eq]": req.params.city,
+  };
 
-  const currentPath = req.path.replace(/^\//, "");
+  const pathTitle = req.path.replace(/^\//, "");
+
+  const quickscanResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
+      new URLSearchParams(params),
+  );
+  const quickscanResponseJSON = await quickscanResponse.json();
+  const quickscanData = quickscanResponseJSON.data;
+  console.log(quickscanData);
 
   res.render("city.liquid", {
-    currentPath: currentPath,
+    pathTitle: pathTitle,
+    quickscans: quickscanData,
   });
 });
 

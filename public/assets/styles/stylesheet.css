@@ -9,8 +9,8 @@
   --accent-color: #555ba3;
   --accent-dark: color-mix(in oklab, var(--accent-color), #000 35%);
 
-  --status-occupied: #c62828;
-  --status-violation: #e65100;
+  --status-violation: #c62828;
+  --status-occupied: #e65100;
   --status-available: #2e7d32;
   --status-invalid: #616161;
 
