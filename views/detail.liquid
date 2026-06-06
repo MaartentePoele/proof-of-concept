@@ -4,36 +4,76 @@
 
   <div class="quickscan-detail-card">
     <img src="/assets/images/tth.jpg" alt="">
-    <h1>Wibautstraat 2</h1>
-    <p>Amsterdam</p>
+    <h1>{{ quickscanDetails[0].address }}</h1>
+    <p>{{ quickscanDetails[0].city }}</p>
   </div>
 
-  <table class="quickscan-table">
-    <tr class="table-row">
-      <td class="table-heading">Status</td>
-      <td class="table-detail"><span class="status-highlight">Available</span></td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-heading">Bord</td>
-      <td class="table-detail">Niet parkeren</td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-heading">Lengte</td>
-      <td class="table-detail">1200 cm</td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-heading">Tijd</td>
-      <td class="table-detail">16:54:00</td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-heading">Smartzone</td>
-      <td class="table-detail">Suitable</td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-heading">Monitoring</td>
-      <td class="table-detail">Very suitable</td>
-    </tr>
-  </table>
+  {% for quickscanDetail in quickscanDetails %}
+    <table class="quickscan-table">
+      <tr>
+        <th>Tijd</th>
+        <td>{{ quickscanDetail.time }}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          {% if quickscanDetail.status == 'vrij' %}
+            <span class="status-highlight" style="background-color: var(--status-available)">
+              {{ quickscanDetail.status }}
+            </span>
+          {% elsif quickscanDetail.status == 'bezet' %}
+            <span class="status-highlight" style="background-color: var(--status-occupied)">
+              {{ quickscanDetail.status }}
+            </span>
+          {% elsif quickscanDetail.status == 'overtreding' %}
+            <span class="status-highlight" style="background-color: var(--status-violation)">
+              {{ quickscanDetail.status }}
+            </span>
+          {% elsif quickscanDetail.status == 'bestaat niet' %}
+            <span class="status-highlight" style="background-color: var(--status-invalid)">
+              {{ quickscanDetail.status }}
+            </span>
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <th>Opmerkingen</th>
+        <td>{{ quickscanDetail.comment }}</td>
+      </tr>
+      <tr>
+        <th>Lengte (cm)</th>
+        <td>{{ quickscanDetail.length }}</td>
+      </tr>
+      <tr>
+        <th>Verkeersbord</th>
+        <td>{{ quickscanDetail.traffic_sign }}</td>
+      </tr>
+      <tr>
+        <th>Geschiktheid monitoring</th>
+        <td>{{ quickscanDetail.monitoring_suitability }}</td>
+      </tr>
+      <tr>
+        <th>Geschiktheid smartzone</th>
+        <td>{{ quickscanDetail.smartzone_suitability }}</td>
+      </tr>
+      <tr>
+        <th>Stad</th>
+        <td>{{ quickscanDetail.city }}</td>
+      </tr>
+      <tr>
+        <th>Adres</th>
+        <td>{{ quickscanDetail.address }}</td>
+      </tr>
+      <tr>
+        <th>Lengtegraad</th>
+        <td>{{ quickscanDetail.long }}</td>
+      </tr>
+      <tr>
+        <th>Breedtegraad</th>
+        <td>{{ quickscanDetail.lat }}</td>
+      </tr>
+    </table>
+  {% endfor %}
 </main>
 
 {% include 'partials/quickscan.liquid' %}

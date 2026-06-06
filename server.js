@@ -67,7 +67,6 @@ app.get("/:city", async function (req, res) {
   );
   const quickscanResponseJSON = await quickscanResponse.json();
   const quickscanData = quickscanResponseJSON.data;
-  // console.log(quickscanData);
 
   res.render("city.liquid", {
     pathTitle: pathTitle,
@@ -75,10 +74,23 @@ app.get("/:city", async function (req, res) {
   });
 });
 
-app.get("/:city/:adress", async function (req, res) {
-  const params = {};
+app.get("/:city/:address", async function (req, res) {
+  const params = {
+    "filter[address][_eq]": req.params.address,
+  };
 
-  res.render("detail.liquid");
+  const quickscanDetailResponse = await fetch(
+    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
+      new URLSearchParams(params),
+  );
+
+  const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
+  const quickscanDetailData = quickscanDetailResponseJSON.data;
+  console.log(quickscanDetailData)
+
+  res.render("detail.liquid", {
+    quickscanDetails: quickscanDetailData,
+  });
 });
 
 app.set("port", process.env.PORT || 8000);

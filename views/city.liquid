@@ -8,17 +8,14 @@
         <h2 class="dashboard-box-heading">Smart zones</h2>
         <span class="dashboard-box-value">40</span>
       </div>
-
       <div class="dashboard-box">
         <h2 class="dashboard-box-heading">Steden</h2>
         <span class="dashboard-box-value">5</span>
       </div>
-
       <div class="dashboard-box">
         <h2 class="dashboard-box-heading">In gebruik</h2>
         <span class="dashboard-box-value">41%</span>
       </div>
-
       <div class="dashboard-box">
         <h2 class="dashboard-box-heading">Quickscans</h2>
         <span class="dashboard-box-value">15</span>
@@ -40,14 +37,14 @@
           <a href="/{{ quickscan.city }}/{{ quickscan.address }}">{{ quickscan.address }}</a>
         </h4>
         <p class="quickscan-status">
-          {{ quickscan.status }}
+          {{ quickscan.status | capitalize }}
           {% if quickscan.status == 'vrij' %}
             <span style="background-color: var(--status-available)"></span>
           {% elsif quickscan.status == 'bezet' %}
             <span style="background-color: var(--status-occupied)"></span>
           {% elsif quickscan.status == 'overtreding' %}
             <span style="background-color: var(--status-violation)"></span>
-          {% else %}
+          {% elsif quickscan.status == 'bestaat niet' %}
             <span style="background-color: var(--status-invalid)"></span>
           {% endif %}
         </p>

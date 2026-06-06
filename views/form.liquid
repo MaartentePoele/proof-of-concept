@@ -1,8 +1,10 @@
 {% include 'partials/head.liquid' %}
 <main>
   <form class="quickscan-form" action="/quickscan-post" method="post">
-    {% comment %} <label for="picture">Foto</label>
-    <input type="file" id="picture" name="picture"> {% endcomment %}
+    {% comment %}
+      <label for="picture">Foto</label>
+      <input type="file" id="picture" name="picture">
+    {% endcomment %}
 
     <label for="status">Status</label>
     <select id="status" name="status">
@@ -60,11 +62,13 @@
     <fieldset class="coordinates-fieldset">
       <legend>Coördinaten</legend>
 
-      <label>Lengtegraad:
+      <label
+        >Lengtegraad:
         <input type="number" name="long">
       </label>
 
-      <label>Breedtegraad:
+      <label
+        >Breedtegraad:
         <input type="number" name="lat">
       </label>
     </fieldset>

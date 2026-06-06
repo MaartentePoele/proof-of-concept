@@ -142,7 +142,6 @@ header {
       color: var(--accent-color);
       font-size: var(--font-size-xs);
       padding: 0 0.25rem;
-      text-transform: capitalize;
       display: flex;
       align-items: center;
       gap: 0.25rem;
@@ -214,32 +213,37 @@ header {
   border-radius: 1rem;
   border-collapse: collapse;
 
-  .table-heading {
+  th {
     color: var(--text-dark-secondary);
+    font-weight: 400;
+    text-align: start;
   }
 
-  .table-detail {
+  td {
     font-weight: bold;
     text-align: end;
     color: var(--text-dark-primary);
 
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
     .status-highlight {
       color: #fff;
-      background-color: var(--status-available);
       padding: 0.25rem;
       border-radius: 0.25rem;
     }
   }
 
-  .table-heading,
-  .table-detail {
+  th,
+  td {
     border-bottom: 1px solid gray;
     padding: 0.75rem;
   }
 
-  .table-row:last-child {
-    .table-heading,
-    .table-detail {
+  tr:last-child {
+    th,
+    td {
       border-bottom: none;
     }
   }
