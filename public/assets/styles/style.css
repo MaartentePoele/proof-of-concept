@@ -247,6 +247,13 @@ header {
       border-bottom: none;
     }
   }
+
+  .delete-button {
+    background-color: var(--status-violation);
+    color: #fff;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
 }
 
 .back {

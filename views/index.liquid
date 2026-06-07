@@ -5,20 +5,20 @@
 
     <div class="dashboard-boxes">
       <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">Smart zones</h2>
-        <span class="dashboard-box-value">40</span>
+        <h2 class="dashboard-box-heading">Smart zone geschikt</h2>
+        <span class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</span>
       </div>
       <div class="dashboard-box">
         <h2 class="dashboard-box-heading">Steden</h2>
-        <span class="dashboard-box-value">5</span>
+        <span class="dashboard-box-value">{{ cityAmount }}</span>
       </div>
       <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">In gebruik</h2>
-        <span class="dashboard-box-value">41%</span>
+        <h2 class="dashboard-box-heading">Vrij</h2>
+        <span class="dashboard-box-value">{{ vrijPercentage | round }}%</span>
       </div>
       <div class="dashboard-box">
         <h2 class="dashboard-box-heading">Quickscans</h2>
-        <span class="dashboard-box-value">15</span>
+        <span class="dashboard-box-value">{{ quickscanAmount.count }}</span>
       </div>
     </div>
   </section>
