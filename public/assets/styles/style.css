@@ -29,10 +29,7 @@ header {
     justify-content: space-evenly;
     margin-left: auto;
     z-index: 10;
-
-    &:hover {
-      cursor: pointer;
-    }
+    cursor: pointer;
 
     div {
       background-color: var(--accent-color);
@@ -280,6 +277,8 @@ header {
     color: #fff;
     padding: 0.25rem;
     border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
   }
 }
 

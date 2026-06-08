@@ -84,27 +84,16 @@ app.post("/quickscan-post", async function (req, res) {
   res.redirect(303, "/");
 });
 
-// app.post("/quickscan-delete", async function (req, res) {
-//   const quicksanAddressResponse = await fetch(
-//     "https://fdnd-agency.directus.app/items/ctc_smartzone?filter[address][_eq]" +
-//       req.params.address,
-//   );
-//   const quicksanAddressjson = await quicksanAddressResponse.json();
-//   const quickscanAddress = quicksanAddressjson.data[0].address;
-//   const quickscanCity = quicksanAddressjson.data[0].city;
+app.post("/:city/quickscan-delete", async function (req, res) {
+  const id = req.body.id;
+  const city = req.params.city;
 
-//   await fetch(
-//     "https://fdnd-agency.directus.app/items/ctc_smartzone/" +
-//       quickscanCity +
-//       "/" +
-//       quickscanAddress,
-//     {
-//       method: "DELETE",
-//     },
-//   );
+  await fetch("https://fdnd-agency.directus.app/items/ctc_smartzone/" + id, {
+    method: "DELETE",
+  });
 
-//   response.redirect(303, request.header("Referer") || "/");
-// });
+  res.redirect(303, "/" + city);
+});
 
 app.get("/:city", async function (req, res) {
   const params = {

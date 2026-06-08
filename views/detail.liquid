@@ -21,23 +21,9 @@
       <tr>
         <th>Status</th>
         <td>
-          {% if quickscanDetail.status == 'vrij' %}
-            <span class="status-highlight" style="background-color: var(--status-available)">
-              {{ quickscanDetail.status }}
-            </span>
-          {% elsif quickscanDetail.status == 'bezet' %}
-            <span class="status-highlight" style="background-color: var(--status-occupied)">
-              {{ quickscanDetail.status }}
-            </span>
-          {% elsif quickscanDetail.status == 'overtreding' %}
-            <span class="status-highlight" style="background-color: var(--status-violation)">
-              {{ quickscanDetail.status }}
-            </span>
-          {% elsif quickscanDetail.status == 'bestaat niet' %}
-            <span class="status-highlight" style="background-color: var(--status-invalid)">
-              {{ quickscanDetail.status }}
-            </span>
-          {% endif %}
+          <span class="status-highlight" data-status="{{ quickscanDetail.status }}">
+            {{ quickscanDetail.status }}
+          </span>
         </td>
       </tr>
       <tr>
@@ -77,7 +63,12 @@
         <td>{{ quickscanDetail.lat }}</td>
       </tr>
       <tr>
-        <th><a class="delete-button" href="/quickscan-delete">Verwijder</a></th>
+        <th>
+          <form method="POST" action="/{{ quickscanDetail.city }}/quickscan-delete">
+            <input type="hidden" name="id" value="{{ quickscanDetail.id }}">
+            <button class="delete-button" type="submit">Verwijder</button>
+          </form>
+        </th>
       </tr>
     </table>
   {% endfor %}

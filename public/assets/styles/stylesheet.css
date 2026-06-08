@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  /* max-width: 300px; */
+  max-width: 300px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -48,4 +48,20 @@ a {
 
 textarea {
   resize: none;
+}
+
+[data-status="bezet"] {
+  background-color: var(--status-occupied);
+}
+
+[data-status="bestaat niet"] {
+  background-color: var(--status-invalid);
+}
+
+[data-status="beschikbaar"] {
+  background-color: var(--status-available);
+}
+
+[data-status="overtreding"] {
+  background-color: var(--status-violation);
 }
