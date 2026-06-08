@@ -1,5 +1,7 @@
 import express from "express";
 import { Liquid } from "liquidjs";
+import multer from "multer";
+const upload = multer({ storage: multer.memoryStorage() });
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -58,13 +60,41 @@ app.get("/quickscan", async function (req, res) {
   res.render("form.liquid");
 });
 
-app.post("/quickscan-post", async function (req, res) {
+app.post("/quickscan-post", upload.single("picture"), async function (req, res) {
+  let pictureId = null;
+
+  // Als er een foto is meegestuurd, voer dit dan uit
+  if (req.file) {
+    // Haal de data van de file/foto op uit het formulier in de HTML
+    const file = req.file;
+
+    // Maak een nieuwe FormData object om de file data te versturen in een multipart/form-data request
+    const formData = new FormData();
+    const blob = new Blob([file.buffer], { type: file.mimetype });
+    formData.append("picture", blob, file.originalname);
+
+    // Verstuur een POST request naar de Directus API om de file te uploaden
+    const uploadResponse = await fetch(
+      "https://fdnd-agency.directus.app/files",
+      {
+        method: "POST",
+        body: formData,
+      },
+    );
+
+    // Parse de JSON response van Directus
+    const uploadResponseData = await uploadResponse.json();
+
+    // Zet de geparsde JSON repsonse om in een variabele
+    pictureId = uploadResponseData.data.id;
+  }
+
   await fetch("https://fdnd-agency.directus.app/items/ctc_smartzone", {
     method: "POST",
     body: JSON.stringify({
       comment: req.body.comment,
       address: req.body.address,
-      // picture: req.body.picture,
+      picture: pictureId,
       city: req.body.city,
       length: req.body.length,
       time: req.body.time,

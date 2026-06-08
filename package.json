@@ -28,7 +28,8 @@
   "homepage": "https://github.com/fdnd-task/proof-of-concept#readme",
   "dependencies": {
     "express": "^5.0.1",
-    "liquidjs": "^10.21.0"
+    "liquidjs": "^10.21.0",
+    "multer": "^2.1.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

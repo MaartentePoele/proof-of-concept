@@ -58,7 +58,7 @@ textarea {
   background-color: var(--status-invalid);
 }
 
-[data-status="beschikbaar"] {
+[data-status="vrij"] {
   background-color: var(--status-available);
 }
 

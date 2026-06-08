@@ -1,10 +1,8 @@
 {% include 'partials/head.liquid' %}
 <main>
-  <form class="quickscan-form" action="/quickscan-post" method="post">
-    {% comment %}
-      <label for="picture">Foto</label>
-      <input type="file" id="picture" name="picture">
-    {% endcomment %}
+  <form class="quickscan-form" action="/quickscan-post" method="post" enctype="multipart/form-data">
+    <label for="picture">Foto</label>
+    <input type="file" id="picture" name="picture">
 
     <label for="status">Status</label>
     <select id="status" name="status">
