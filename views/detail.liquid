@@ -1,9 +1,13 @@
 {% include 'partials/head.liquid' %}
 <main class="detail-main">
-  <a class="back" href="/Amsterdam">← Terug</a>
+  <a class="back" href="/{{ quickscanDetails[0].city }}">← Terug</a>
 
   <div class="quickscan-detail-card">
-    <img src="/assets/images/tth.jpg" alt="">
+    {% if quickscanDetails[0].picture == null %}
+      <img src="/assets/images/fallback.png" alt="">
+    {% else %}
+      <img class="quickscan-img" src="https://fdnd-agency.directus.app/assets/{{ quickscanDetails[0].picture }}" alt="">
+    {% endif %}
     <h1>{{ quickscanDetails[0].address }}</h1>
     <p>{{ quickscanDetails[0].city }}</p>
   </div>

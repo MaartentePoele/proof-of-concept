@@ -1,5 +1,6 @@
 header {
   align-items: center;
+  justify-content: flex-end;
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
@@ -27,6 +28,11 @@ header {
     height: 3rem;
     justify-content: space-evenly;
     margin-left: auto;
+    z-index: 10;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     div {
       background-color: var(--accent-color);
@@ -40,17 +46,38 @@ header {
     display: flex;
     position: absolute;
     top: 0;
+    right: 0;
     flex-grow: 1;
     flex-direction: column;
-    transform: translateX(120%);
+    transform: translateX(100%);
+    opacity: 0;
+    padding-top: 82.4px;
+    background-color: var(--accent-color);
+    z-index: -1;
+    transition: transform 0.3s ease-out;
 
     a {
-      color: var(--accent-color);
+      color: #fff;
+      background-color: var(--accent-color);
       font-size: var(--font-size-l);
       padding: 1rem;
       font-weight: bold;
+
+      &:hover {
+        color: var(--accent-color);
+        background-color: #fff;
+      }
     }
   }
+}
+
+.menu-nav.clicked {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.menu.clicked div {
+  background-color: #fff;
 }
 
 .dashboard {

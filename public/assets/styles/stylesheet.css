@@ -35,10 +35,11 @@ html {
 }
 
 body {
-  max-width: 300px;
+  /* max-width: 300px; */
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 a {
