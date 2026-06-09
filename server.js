@@ -13,8 +13,6 @@ app.set("views", "./views");
 const baseURL = "https://fdnd-agency.directus.app/items/ctc_smartzone";
 
 app.get("/", async function (req, res) {
-  const params = {};
-
   const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
   const cityResponseJSON = await cityResponse.json();
   const cityData = cityResponseJSON.data;
@@ -54,8 +52,6 @@ app.get("/", async function (req, res) {
 });
 
 app.get("/quickscan", async function (req, res) {
-  const params = {};
-
   res.render("form.liquid");
 });
 
@@ -115,15 +111,19 @@ app.get("/:city/:address", async function (req, res) {
   };
 
   const quickscanDetailResponse = await fetch(
-    baseURL + "?" +
-      new URLSearchParams(params),
+    baseURL + "?" + new URLSearchParams(params),
   );
 
   const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
   const quickscanDetailData = quickscanDetailResponseJSON.data;
 
+  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
+  const cityResponseJSON = await cityResponse.json();
+  const cityData = cityResponseJSON.data;
+
   res.render("detail.liquid", {
     quickscanDetails: quickscanDetailData,
+    cities: cityData,
   });
 });
 
@@ -146,22 +146,24 @@ app.get("/:city", async function (req, res) {
   const pathTitle = req.path.replace(/^\//, "");
 
   const quickscanResponse = await fetch(
-    baseURL + "?" +
-      new URLSearchParams(params),
+    baseURL + "?" + new URLSearchParams(params),
   );
   const quickscanResponseJSON = await quickscanResponse.json();
   const quickscanData = quickscanResponseJSON.data;
 
   const quickscanAmountResponse = await fetch(
-    baseURL + "?" +
-      new URLSearchParams(params) +
-      "&aggregate[count]=*",
+    baseURL + "?" + new URLSearchParams(params) + "&aggregate[count]=*",
   );
   const quickscanAmountJSON = await quickscanAmountResponse.json();
   const quickscanAmount = quickscanAmountJSON.data[0];
 
+  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
+  const cityResponseJSON = await cityResponse.json();
+  const cityData = cityResponseJSON.data;
+
   const overtredingResponse = await fetch(
-    baseURL + "?" +
+    baseURL +
+      "?" +
       new URLSearchParams(params) +
       "&fields=status&filter[status][_eq]=overtreding",
   );
@@ -170,7 +172,8 @@ app.get("/:city", async function (req, res) {
     (overtredingResponseJSON.data.length / quickscanAmount.count) * 100;
 
   const smartzoneGeschiktResponse = await fetch(
-    baseURL + "?" +
+    baseURL +
+      "?" +
       new URLSearchParams(params) +
       "&fields=smartzone_suitability&filter[smartzone_suitability][_eq]=geschikt",
   );
@@ -179,9 +182,7 @@ app.get("/:city", async function (req, res) {
     (smartzoneGeschiktResponseJSON.data.length / quickscanAmount.count) * 100;
 
   const lengthResponse = await fetch(
-    baseURL + "?" +
-      new URLSearchParams(params) +
-      "&fields=length",
+    baseURL + "?" + new URLSearchParams(params) + "&fields=length",
   );
   const lengthResponseJSON = await lengthResponse.json();
 
@@ -200,6 +201,7 @@ app.get("/:city", async function (req, res) {
     quickscanAmount: quickscanAmount,
     pathTitle: pathTitle,
     quickscans: quickscanData,
+    cities: cityData,
   });
 });
 
