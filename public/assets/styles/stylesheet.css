@@ -32,14 +32,23 @@
 
 html {
   container-type: scroll-state;
+  height: 100%;
 }
 
 body {
-  max-width: 300px;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
+  justify-content: center;
   overflow-x: hidden;
+  min-height: 100%;
+}
+
+main {
+  max-width: 1000px;
+  
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+  }
 }
 
 a {
