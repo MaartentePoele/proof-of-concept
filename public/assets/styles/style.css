@@ -36,6 +36,7 @@ header {
       border-radius: 9rem;
       height: 12.5%;
       width: 100%;
+      transition: 0.3s ease-in-out;
     }
   }
 
@@ -47,11 +48,10 @@ header {
     flex-grow: 1;
     flex-direction: column;
     transform: translateX(100%);
-    opacity: 0;
     padding-top: 82.4px;
     background-color: var(--accent-color);
     z-index: -1;
-    transition: transform 0.3s ease-out;
+    transition: 0.3s ease-out;
 
     a {
       color: #fff;
@@ -73,8 +73,23 @@ header {
   transform: translateX(0%);
 }
 
-.menu.clicked div {
-  background-color: #fff;
+.menu.clicked {
+  div {
+    background-color: #fff;
+  }
+
+  .line1 {
+    transform: rotate(45deg) translateX(10px) translateY(9px);
+  }
+
+  .line2 {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .line3 {
+    transform: rotate(-45deg) translateX(10px) translateY(-9px);
+  }
 }
 
 .dashboard {
