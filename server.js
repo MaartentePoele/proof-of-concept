@@ -10,36 +10,35 @@ const engine = new Liquid();
 app.engine("liquid", engine.express());
 app.set("views", "./views");
 
+const baseURL = "https://fdnd-agency.directus.app/items/ctc_smartzone";
+
 app.get("/", async function (req, res) {
   const params = {};
 
-  const cityResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=city&groupBy=city",
-  );
+  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
   const cityResponseJSON = await cityResponse.json();
   const cityData = cityResponseJSON.data;
 
   const cityAmountResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=city&groupBy=city&aggregate[count]=*",
+    baseURL + "?fields=city&groupBy=city&aggregate[count]=*",
   );
   const cityAmountJSON = await cityAmountResponse.json();
   const cityAmount = cityAmountJSON.data.length;
 
-  const quickscanAmountResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?aggregate[count]=*",
-  );
+  const quickscanAmountResponse = await fetch(baseURL + "?aggregate[count]=*");
   const quickscanAmountJSON = await quickscanAmountResponse.json();
   const quickscanAmount = quickscanAmountJSON.data[0];
 
-  const vrijResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=status&filter[status][_eq]=vrij",
+  const overtredingResponse = await fetch(
+    baseURL + "?fields=status&filter[status][_eq]=overtreding",
   );
-  const vrijResponseJSON = await vrijResponse.json();
-  const vrijPercentage =
-    (vrijResponseJSON.data.length / quickscanAmount.count) * 100;
+  const overtredingResponseJSON = await overtredingResponse.json();
+  const overtredingPercentage =
+    (overtredingResponseJSON.data.length / quickscanAmount.count) * 100;
 
   const smartzoneGeschiktResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=smartzone_suitability&filter[smartzone_suitability][_eq]=geschikt",
+    baseURL +
+      "?fields=smartzone_suitability&filter[smartzone_suitability][_eq]=geschikt",
   );
   const smartzoneGeschiktResponseJSON = await smartzoneGeschiktResponse.json();
   const smartzoneGeschiktPercentage =
@@ -47,7 +46,7 @@ app.get("/", async function (req, res) {
 
   res.render("index.liquid", {
     smartzoneGeschiktPercentage: smartzoneGeschiktPercentage,
-    vrijPercentage: vrijPercentage,
+    overtredingPercentage: overtredingPercentage,
     cityAmount: cityAmount,
     quickscanAmount: quickscanAmount,
     cities: cityData,
@@ -60,65 +59,79 @@ app.get("/quickscan", async function (req, res) {
   res.render("form.liquid");
 });
 
-app.post("/quickscan-post", upload.single("picture"), async function (req, res) {
-  let pictureId = null;
+app.post(
+  "/quickscan-post",
+  upload.single("picture"),
+  async function (req, res) {
+    // om foto te uploaden
+    let pictureId = null;
 
-  // Als er een foto is meegestuurd, voer dit dan uit
-  if (req.file) {
-    // Haal de data van de file/foto op uit het formulier in de HTML
-    const file = req.file;
+    if (req.file) {
+      const file = req.file;
+      const formData = new FormData();
+      const blob = new Blob([file.buffer], { type: file.mimetype });
+      formData.append("picture", blob, file.originalname);
+      const uploadResponse = await fetch(
+        "https://fdnd-agency.directus.app/files",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
 
-    // Maak een nieuwe FormData object om de file data te versturen in een multipart/form-data request
-    const formData = new FormData();
-    const blob = new Blob([file.buffer], { type: file.mimetype });
-    formData.append("picture", blob, file.originalname);
+      const uploadResponseData = await uploadResponse.json();
+      pictureId = uploadResponseData.data.id;
+    }
 
-    // Verstuur een POST request naar de Directus API om de file te uploaden
-    const uploadResponse = await fetch(
-      "https://fdnd-agency.directus.app/files",
-      {
-        method: "POST",
-        body: formData,
+    await fetch(baseURL, {
+      method: "POST",
+      body: JSON.stringify({
+        comment: req.body.comment,
+        address: req.body.address,
+        picture: pictureId,
+        city: req.body.city,
+        length: req.body.length,
+        time: req.body.time,
+        monitoring_suitability: req.body.monitoring_suitability,
+        status: req.body.status,
+        long: req.body.long,
+        lat: req.body.lat,
+        smartzone_suitability: req.body.smartzone_suitability,
+        traffic_sign: req.body.traffic_sign,
+      }),
+
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
       },
-    );
+    });
 
-    // Parse de JSON response van Directus
-    const uploadResponseData = await uploadResponse.json();
+    res.redirect(303, "/");
+  },
+);
 
-    // Zet de geparsde JSON repsonse om in een variabele
-    pictureId = uploadResponseData.data.id;
-  }
+app.get("/:city/:address", async function (req, res) {
+  const params = {
+    "filter[address][_eq]": req.params.address,
+  };
 
-  await fetch("https://fdnd-agency.directus.app/items/ctc_smartzone", {
-    method: "POST",
-    body: JSON.stringify({
-      comment: req.body.comment,
-      address: req.body.address,
-      picture: pictureId,
-      city: req.body.city,
-      length: req.body.length,
-      time: req.body.time,
-      monitoring_suitability: req.body.monitoring_suitability,
-      status: req.body.status,
-      long: req.body.long,
-      lat: req.body.lat,
-      smartzone_suitability: req.body.smartzone_suitability,
-      traffic_sign: req.body.traffic_sign,
-    }),
+  const quickscanDetailResponse = await fetch(
+    baseURL + "?" +
+      new URLSearchParams(params),
+  );
 
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-    },
+  const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
+  const quickscanDetailData = quickscanDetailResponseJSON.data;
+
+  res.render("detail.liquid", {
+    quickscanDetails: quickscanDetailData,
   });
-
-  res.redirect(303, "/");
 });
 
 app.post("/:city/quickscan-delete", async function (req, res) {
   const id = req.body.id;
   const city = req.params.city;
 
-  await fetch("https://fdnd-agency.directus.app/items/ctc_smartzone/" + id, {
+  await fetch(baseURL + "/" + id, {
     method: "DELETE",
   });
 
@@ -133,40 +146,60 @@ app.get("/:city", async function (req, res) {
   const pathTitle = req.path.replace(/^\//, "");
 
   const quickscanResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
+    baseURL + "?" +
       new URLSearchParams(params),
   );
   const quickscanResponseJSON = await quickscanResponse.json();
   const quickscanData = quickscanResponseJSON.data;
 
-  const cityResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?fields=city&groupBy=city",
+  const quickscanAmountResponse = await fetch(
+    baseURL + "?" +
+      new URLSearchParams(params) +
+      "&aggregate[count]=*",
   );
-  const cityResponseJSON = await cityResponse.json();
-  const cityData = cityResponseJSON.data;
+  const quickscanAmountJSON = await quickscanAmountResponse.json();
+  const quickscanAmount = quickscanAmountJSON.data[0];
+
+  const overtredingResponse = await fetch(
+    baseURL + "?" +
+      new URLSearchParams(params) +
+      "&fields=status&filter[status][_eq]=overtreding",
+  );
+  const overtredingResponseJSON = await overtredingResponse.json();
+  const overtredingPercentage =
+    (overtredingResponseJSON.data.length / quickscanAmount.count) * 100;
+
+  const smartzoneGeschiktResponse = await fetch(
+    baseURL + "?" +
+      new URLSearchParams(params) +
+      "&fields=smartzone_suitability&filter[smartzone_suitability][_eq]=geschikt",
+  );
+  const smartzoneGeschiktResponseJSON = await smartzoneGeschiktResponse.json();
+  const smartzoneGeschiktPercentage =
+    (smartzoneGeschiktResponseJSON.data.length / quickscanAmount.count) * 100;
+
+  const lengthResponse = await fetch(
+    baseURL + "?" +
+      new URLSearchParams(params) +
+      "&fields=length",
+  );
+  const lengthResponseJSON = await lengthResponse.json();
+
+  let totalLength = 0;
+  let itemAmount = 0;
+  lengthResponseJSON.data.forEach(function (item) {
+    totalLength = totalLength + item.length;
+    itemAmount = itemAmount + 1;
+  });
+  const averageLength = totalLength / itemAmount / 100;
 
   res.render("city.liquid", {
-    cities: cityData,
+    averageLength: averageLength,
+    smartzoneGeschiktPercentage: smartzoneGeschiktPercentage,
+    overtredingPercentage: overtredingPercentage,
+    quickscanAmount: quickscanAmount,
     pathTitle: pathTitle,
     quickscans: quickscanData,
-  });
-});
-
-app.get("/:city/:address", async function (req, res) {
-  const params = {
-    "filter[address][_eq]": req.params.address,
-  };
-
-  const quickscanDetailResponse = await fetch(
-    "https://fdnd-agency.directus.app/items/ctc_smartzone?" +
-      new URLSearchParams(params),
-  );
-
-  const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
-  const quickscanDetailData = quickscanDetailResponseJSON.data;
-
-  res.render("detail.liquid", {
-    quickscanDetails: quickscanDetailData,
   });
 });
 
