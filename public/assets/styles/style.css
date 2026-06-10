@@ -396,13 +396,23 @@ header {
 
   .submit-button {
     margin-top: 1rem;
-    border-radius: 1rem;
     border: 2px solid var(--accent-color);
     background-color: var(--accent-color);
     color: #fff;
     border-radius: 9rem;
     font-size: var(--font-size-m);
     padding: 0.5rem;
+  }
+
+  .loading {
+    background-color: #fff;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+  }
+
+  .success {
+    background-color: var(--status-available);
+    color: #fff;
   }
 }
 
