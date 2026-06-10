@@ -413,6 +413,7 @@ header {
   .success {
     background-color: var(--status-available);
     color: #fff;
+    border: none;
   }
 }
 
