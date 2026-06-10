@@ -52,7 +52,13 @@ app.get("/", async function (req, res) {
 });
 
 app.get("/quickscan", async function (req, res) {
-  res.render("form.liquid");
+  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
+  const cityResponseJSON = await cityResponse.json();
+  const cityData = cityResponseJSON.data;
+
+  res.render("form.liquid", {
+    cities: cityData,
+  });
 });
 
 app.post(
