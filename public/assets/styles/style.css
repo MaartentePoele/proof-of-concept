@@ -149,6 +149,24 @@ header {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    transition-duration: 0.5s;
+  }
+
+  .quickscan-img {
+    view-transition-name: img;
+  }
+
+  ::view-transition-group(img) {
+    transition-duration: 0.5s;
+  }
+}
+
 .quickscans {
   display: flex;
   flex-wrap: wrap;
