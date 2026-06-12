@@ -18,10 +18,11 @@ app.get("/", async function (req, res) {
   const cityData = cityResponseJSON.data;
 
   const cityAmountResponse = await fetch(
-    baseURL + "?fields=city&groupBy=city&aggregate[count]=*",
+    baseURL + "?filter[city][_nempty]&fields=city&groupBy=city&aggregate[count]=*",
   );
   const cityAmountJSON = await cityAmountResponse.json();
   const cityAmount = cityAmountJSON.data.length;
+  console.log(cityAmountResponse)
 
   const quickscanAmountResponse = await fetch(baseURL + "?aggregate[count]=*");
   const quickscanAmountJSON = await quickscanAmountResponse.json();
