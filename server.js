@@ -194,12 +194,10 @@ app.get("/:city", async function (req, res) {
   const lengthResponseJSON = await lengthResponse.json();
 
   let totalLength = 0;
-  let itemAmount = 0;
   lengthResponseJSON.data.forEach(function (item) {
     totalLength = totalLength + item.length;
-    itemAmount = itemAmount + 1;
   });
-  const averageLength = totalLength / itemAmount / 100;
+  const averageLength = totalLength / quickscanAmount.count / 100;
 
   res.render("city.liquid", {
     averageLength: averageLength,
