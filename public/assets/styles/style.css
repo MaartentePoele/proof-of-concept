@@ -52,6 +52,7 @@ header {
     background-color: var(--accent-color);
     z-index: -1;
     transition: 0.3s ease-out;
+    border-bottom-left-radius: 1rem;
 
     a {
       color: #fff;
@@ -71,6 +72,10 @@ header {
 .menu-nav.clicked {
   opacity: 1;
   transform: translateX(0%);
+
+  a:last-of-type {
+    border-bottom-left-radius: 1rem;
+  }
 }
 
 .menu.clicked {
