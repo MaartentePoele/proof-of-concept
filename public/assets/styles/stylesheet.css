@@ -43,23 +43,7 @@ body {
   min-height: 100%;
 }
 
-.home-main,
-.city-main,
-.form-main {
-  max-width: 1000px;
 
-  @media (min-width: 1000px) {
-    margin: 0 auto;
-  }
-}
-
-.detail-main {
-  max-width: 700px;
-
-  @media (min-width: 700px) {
-    margin: 0 auto;
-  }
-}
 
 a {
   text-decoration: none;

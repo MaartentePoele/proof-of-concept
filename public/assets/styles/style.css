@@ -318,6 +318,7 @@ header {
     background-color: var(--status-violation);
     color: #fff;
     padding: 0.25rem;
+    font-size: 1rem;
     border-radius: 0.25rem;
     border: none;
     cursor: pointer;
@@ -329,10 +330,41 @@ header {
   font-weight: bold;
 }
 
+.home-main {
+  max-width: 1000px;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+  }
+}
+
+.city-main {
+  max-width: 1000px;
+  padding-top: 1rem;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+  }
+
+  .back {
+    padding-left: 1rem;
+  }
+}
+
+.detail-main {
+  max-width: 700px;
+
+  @media (min-width: 700px) {
+    margin: 0 auto;
+  }
+}
+
 .quickscan-form {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  max-width: fit-content;
+  margin: 0 auto;
 
   label,
   legend {
