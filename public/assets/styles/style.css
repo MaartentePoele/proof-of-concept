@@ -434,6 +434,7 @@ header {
     border-radius: 9rem;
     font-size: var(--font-size-m);
     padding: 0.5rem;
+    cursor: pointer;
   }
 
   .loading {
