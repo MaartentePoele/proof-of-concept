@@ -214,11 +214,12 @@ header {
 
     .quickscan-status {
       color: var(--accent-color);
-      font-size: var(--font-size-xs);
+      font-size: var(--font-size-s);
       padding: 0 0.25rem;
       display: flex;
       align-items: center;
       gap: 0.25rem;
+      font-weight: bold;
 
       span {
         background-color: black;
@@ -261,7 +262,7 @@ header {
     border: 0.125rem solid var(--accent-color);
     border-radius: 1rem;
     color: var(--accent-color);
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-m);
     padding: 1rem;
   }
 }
