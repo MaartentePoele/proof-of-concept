@@ -27,6 +27,12 @@
     0 4px 8px oklch(0 0 0 / 8.24%);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 html {
   container-type: scroll-state;
   height: 100%;
