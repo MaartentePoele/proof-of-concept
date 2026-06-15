@@ -1,77 +1,75 @@
 {% include 'partials/head.liquid' %}
-<main class="form-main">
-  <form class="quickscan-form" action="/quickscan-post" method="post" enctype="multipart/form-data">
-    <label for="picture">Foto</label>
-    <input type="file" id="picture" name="picture">
+    <main class="form-main">
+      <form class="quickscan-form" action="/quickscan-post" method="post" enctype="multipart/form-data">
+        <label for="picture">Foto</label>
+        <input type="file" id="picture" name="picture">
 
-    <label for="status">Status</label>
-    <select id="status" name="status">
-      <option value="">--Kies een optie--</option>
-      <option value="vrij">Vrij</option>
-      <option value="bezet">Bezet</option>
-      <option value="overtreding">Overtreding</option>
-      <option value="bestaat niet">Bestaat niet</option>
-    </select>
+        <label for="status">Status</label>
+        <select id="status" name="status">
+          <option value="">--Kies een optie--</option>
+          <option value="vrij">Vrij</option>
+          <option value="bezet">Bezet</option>
+          <option value="overtreding">Overtreding</option>
+          <option value="bestaat niet">Bestaat niet</option>
+        </select>
 
-    <label for="comment">Opmerkingen</label>
-    <textarea id="comment" name="comment" rows="5"></textarea>
+        <label for="comment">Opmerkingen</label>
+        <textarea id="comment" name="comment" rows="5"></textarea>
 
-    <label for="length">Lengte (cm)</label>
-    <input type="number" id="length" name="length">
+        <label for="length">Lengte (cm)</label>
+        <input type="number" id="length" name="length">
 
-    <label for="traffic_sign">Verkeersbord</label>
-    <input type="text" id="traffic_sign" name="traffic_sign">
+        <label for="traffic_sign">Verkeersbord</label>
+        <input type="text" id="traffic_sign" name="traffic_sign">
 
-    <fieldset class="monitoring-fieldset">
-      <legend>Geschiktheid monitoring</legend>
-      <div>
-        <label>Geschikt<input type="radio" name="monitoring_suitability" value="geschikt"></label>
-      </div>
-      <div>
-        <label>Neutraal<input type="radio" name="monitoring_suitability" value="neutraal"></label>
-      </div>
-      <div>
-        <label>Ongeschikt<input type="radio" name="monitoring_suitability" value="ongeschikt"></label>
-      </div>
-    </fieldset>
+        <fieldset class="monitoring-fieldset">
+          <legend>Geschiktheid monitoring</legend>
+          <div>
+            <label>Geschikt<input type="radio" name="monitoring_suitability" value="geschikt"></label>
+          </div>
+          <div>
+            <label>Neutraal<input type="radio" name="monitoring_suitability" value="neutraal"></label>
+          </div>
+          <div>
+            <label>Ongeschikt<input type="radio" name="monitoring_suitability" value="ongeschikt"></label>
+          </div>
+        </fieldset>
 
-    <fieldset class="smartzone-fieldset">
-      <legend>Geschiktheid smartzone</legend>
-      <div>
-        <label>Geschikt<input type="radio" name="smartzone_suitability" value="geschikt"></label>
-      </div>
-      <div>
-        <label>Neutraal<input type="radio" name="smartzone_suitability" value="neutraal"></label>
-      </div>
-      <div>
-        <label>Ongeschikt<input type="radio" name="smartzone_suitability" value="ongeschikt"></label>
-      </div>
-    </fieldset>
+        <fieldset class="smartzone-fieldset">
+          <legend>Geschiktheid smartzone</legend>
+          <div>
+            <label>Geschikt<input type="radio" name="smartzone_suitability" value="geschikt"></label>
+          </div>
+          <div>
+            <label>Neutraal<input type="radio" name="smartzone_suitability" value="neutraal"></label>
+          </div>
+          <div>
+            <label>Ongeschikt<input type="radio" name="smartzone_suitability" value="ongeschikt"></label>
+          </div>
+        </fieldset>
 
-    <label for="time">Tijd</label>
-    <input type="time" id="time" name="time">
+        <label for="time">Tijd</label>
+        <input type="time" id="time" name="time">
 
-    <label for="city">Stad</label>
-    <input type="text" id="city" name="city">
+        <label for="city">Stad</label>
+        <input type="text" id="city" name="city">
 
-    <label for="address">Adres</label>
-    <input type="text" id="adress" name="address">
+        <label for="address">Adres</label>
+        <input type="text" id="adress" name="address">
 
-    <fieldset class="coordinates-fieldset">
-      <legend>Coördinaten</legend>
+        <fieldset class="coordinates-fieldset">
+          <legend>Coördinaten</legend>
 
-      <label
-        >Lengtegraad:
-        <input type="number" step="any" name="long">
-      </label>
+          <label>Lengtegraad:
+            <input type="number" step="any" name="long">
+          </label>
 
-      <label
-        >Breedtegraad:
-        <input type="number" step="any" name="lat">
-      </label>
-    </fieldset>
+          <label>Breedtegraad:
+            <input type="number" step="any" name="lat">
+          </label>
+        </fieldset>
 
-    <button class="submit-button" type="submit">Submit</button>
-  </form>
-</main>
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+    </main>
 {% include 'partials/foot.liquid' %}

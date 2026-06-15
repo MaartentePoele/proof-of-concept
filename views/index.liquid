@@ -1,38 +1,38 @@
 {% include 'partials/head.liquid' %}
-<main class="home-main">
-  <section class="dashboard">
-    <h1>Dashboard Nederland</h1>
+    <main class="home-main">
+      <section class="dashboard">
+        <h1>Dashboard Nederland</h1>
 
-    <div class="dashboard-boxes">
-      <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">Smart zone geschiktheid</h2>
-        <span class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</span>
-      </div>
-      <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">In overtreding</h2>
-        <span class="dashboard-box-value">{{ overtredingPercentage | round }}%</span>
-      </div>
-      <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">Quickscans</h2>
-        <span class="dashboard-box-value">{{ quickscanAmount.count }}</span>
-      </div>
+        <div class="dashboard-boxes">
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Smart zone geschiktheid</h2>
+            <span class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</span>
+          </div>
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">In overtreding</h2>
+            <span class="dashboard-box-value">{{ overtredingPercentage | round }}%</span>
+          </div>
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Quickscans</h2>
+            <span class="dashboard-box-value">{{ quickscanAmount.count }}</span>
+          </div>
 
-      <div class="dashboard-box">
-        <h2 class="dashboard-box-heading">Steden</h2>
-        <span class="dashboard-box-value">{{ cityAmount }}</span>
-      </div>
-    </div>
-  </section>
+          <div class="dashboard-box">
+            <h2 class="dashboard-box-heading">Steden</h2>
+            <span class="dashboard-box-value">{{ cityAmount }}</span>
+          </div>
+        </div>
+      </section>
 
-  <nav class="city-nav">
-    <h3 class="city-heading">Steden</h3>
-    {% for city in cities %}
-      {% if city.city != null %}
+      <nav class="city-nav">
+        <h3 class="city-heading">Steden</h3>
+    {%- for city in cities %}
+      {%- if city.city != null %}
         <a href="/{{ city.city }}">{{ city.city }}</a>
-      {% endif %}
-    {% endfor %}
-  </nav>
-</main>
+      {%- endif %}
+    {%- endfor %}
+      </nav>
+    </main>
 
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}

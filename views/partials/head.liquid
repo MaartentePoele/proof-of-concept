@@ -22,10 +22,10 @@
       </button>
 
       <nav class="menu-nav">
-      {% for city in cities %}
-        {% if city.city != null %}
-          <a href="/{{ city.city }}">{{ city.city }}</a>
-        {% endif %}
-      {% endfor %}
+    {%- for city in cities %}
+      {%- if city.city != null %}
+        <a href="/{{ city.city }}">{{ city.city }}</a>
+      {%- endif %}
+    {%- endfor %}
       </nav>
     </header>
