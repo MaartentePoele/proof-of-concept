@@ -1,81 +1,82 @@
 {% include 'partials/head.liquid' %}
-    <main class="detail-main">
-      <a class="back" href="/{{ quickscanDetails[0].city }}">← Terug</a>
+<main class="detail-main">
+  <a class="back" href="/{{ quickscanDetails[0].city }}">← Terug</a>
 
-      <div class="quickscan-detail-card">
-      {%- if quickscanDetails[0].picture == null %}
-        <img src="/assets/images/fallback.png" alt="">
-      {%- else %}
-        <img 
-          class="quickscan-img" 
-          src="https://fdnd-agency.directus.app/assets/{{ quickscanDetails[0].picture }}" 
-          alt=""
-          style="view-transition-name: quickscan-img-{{ quickscanDetails[0].id }};">
-      {%- endif %}
-        <h1>{{ quickscanDetails[0].address }}</h1>
-        <p>{{ quickscanDetails[0].city }}</p>
-      </div>
-    {% for quickscanDetail in quickscanDetails %}
-      <table class="quickscan-table">
-        <tr>
-          <th>Tijd</th>
-          <td>{{ quickscanDetail.time }}</td>
-        </tr>
-        <tr>
-          <th>Status</th>
-          <td>
-            <span class="status-highlight" data-status="{{ quickscanDetail.status }}">
-              {{ quickscanDetail.status }}
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <th>Opmerkingen</th>
-          <td>{{ quickscanDetail.comment }}</td>
-        </tr>
-        <tr>
-          <th>Lengte (cm)</th>
-          <td>{{ quickscanDetail.length }}</td>
-        </tr>
-        <tr>
-          <th>Verkeersbord</th>
-          <td>{{ quickscanDetail.traffic_sign }}</td>
-        </tr>
-        <tr>
-          <th>Geschiktheid monitoring</th>
-          <td>{{ quickscanDetail.monitoring_suitability }}</td>
-        </tr>
-        <tr>
-          <th>Geschiktheid smartzone</th>
-          <td>{{ quickscanDetail.smartzone_suitability }}</td>
-        </tr>
-        <tr>
-          <th>Stad</th>
-          <td>{{ quickscanDetail.city }}</td>
-        </tr>
-        <tr>
-          <th>Adres</th>
-          <td>{{ quickscanDetail.address }}</td>
-        </tr>
-        <tr>
-          <th>Lengtegraad</th>
-          <td>{{ quickscanDetail.long }}</td>
-        </tr>
-        <tr>
-          <th>Breedtegraad</th>
-          <td>{{ quickscanDetail.lat }}</td>
-        </tr>
-        <tr>
-          <th>
-            <form method="POST" action="/{{ quickscanDetail.city }}/quickscan-delete">
-              <input type="hidden" name="id" value="{{ quickscanDetail.id }}">
-              <button class="delete-button" type="submit">Verwijder</button>
-            </form>
-          </th>
-        </tr>
-      </table>
-    {%- endfor %}
-    </main>
+  <div class="quickscan-detail-card">
+    {%- if quickscanDetails[0].picture == null %}
+      <img src="/assets/images/fallback.png" alt="">
+    {%- else %}
+      <img
+        class="quickscan-img"
+        src="https://fdnd-agency.directus.app/assets/{{ quickscanDetails[0].picture }}"
+        alt=""
+        style="view-transition-name: quickscan-img-{{ quickscanDetails[0].id }};">
+    {%- endif %}
+    <h1>{{ quickscanDetails[0].address }}</h1>
+    <p>{{ quickscanDetails[0].city }}</p>
+  </div>
+  {% for quickscanDetail in quickscanDetails %}
+    <table class="quickscan-table">
+      <tr>
+        <th>Tijd</th>
+        <td>{{ quickscanDetail.time }}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          <span class="status-highlight" data-status="{{ quickscanDetail.status }}">
+            {{ quickscanDetail.status }}
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Opmerkingen</th>
+        <td>{{ quickscanDetail.comment }}</td>
+      </tr>
+      <tr>
+        <th>Lengte (cm)</th>
+        <td>{{ quickscanDetail.length }}</td>
+      </tr>
+      <tr>
+        <th>Verkeersbord</th>
+        <td>{{ quickscanDetail.traffic_sign }}</td>
+      </tr>
+      <tr>
+        <th>Geschiktheid monitoring</th>
+        <td>{{ quickscanDetail.monitoring_suitability }}</td>
+      </tr>
+      <tr>
+        <th>Geschiktheid smartzone</th>
+        <td>{{ quickscanDetail.smartzone_suitability }}</td>
+      </tr>
+      <tr>
+        <th>Stad</th>
+        <td>{{ quickscanDetail.city }}</td>
+      </tr>
+      <tr>
+        <th>Adres</th>
+        <td>{{ quickscanDetail.address }}</td>
+      </tr>
+      <tr>
+        <th>Lengtegraad</th>
+        <td>{{ quickscanDetail.long }}</td>
+      </tr>
+      <tr>
+        <th>Breedtegraad</th>
+        <td>{{ quickscanDetail.lat }}</td>
+      </tr>
+      <tr>
+        <th>
+          <form method="POST" action="/{{ quickscanDetail.city }}/quickscan-delete">
+            <input type="hidden" name="id" value="{{ quickscanDetail.id }}">
+            <button class="delete-button" type="submit">Verwijder</button>
+          </form>
+        </th>
+        <td></td>
+      </tr>
+    </table>
+  {%- endfor %}
+</main>
 
 {% include 'partials/quickscan.liquid' %}
 {% include 'partials/foot.liquid' %}

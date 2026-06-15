@@ -32,6 +32,6 @@ quickscanForm.addEventListener("submit", async function (event) {
   setTimeout(() => {
     submitButton.classList.remove("success");
     submitButton.textContent = "Submit";
-    location.reload();
+    quickscanForm.reset();
   }, 3000);
 });
