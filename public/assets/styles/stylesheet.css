@@ -17,13 +17,10 @@
   --text-dark-primary: oklch(5% 0 0);
   --text-dark-secondary: oklch(25% 0 0);
   --text-light-primary: oklch(95% 0 0);
-  --text-light-secondary: oklch(75% 0 0);
 
-  --font-size-xs: 0.875rem;
   --font-size-s: 1rem;
   --font-size-m: 1.25rem;
   --font-size-l: 1.5rem;
-  --font-size-xl: 2rem;
 
   --shadow-primary:
     inset 0 1px 2px oklch(100% 0 0 / 18.82%), 0 2px 4px oklch(0 0 0 / 18.82%),
@@ -41,6 +38,40 @@ body {
   justify-content: center;
   overflow-x: hidden;
   min-height: 100%;
+}
+
+.home-main {
+  max-width: 1000px;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+  }
+}
+
+.city-main {
+  max-width: 1000px;
+  padding-top: 1rem;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+  }
+
+  .back {
+    padding-left: 1rem;
+  }
+}
+
+.detail-main {
+  max-width: 700px;
+
+  @media (min-width: 700px) {
+    margin: 0 auto;
+  }
+}
+
+.back {
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
 a {
