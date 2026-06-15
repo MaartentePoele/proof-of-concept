@@ -18,11 +18,11 @@ app.get("/", async function (req, res) {
   const cityData = cityResponseJSON.data;
 
   const cityAmountResponse = await fetch(
-    baseURL + "?filter[city][_nempty]&fields=city&groupBy=city&aggregate[count]=*",
+    baseURL +
+      "?filter[city][_nempty]&fields=city&groupBy=city&aggregate[count]=*",
   );
   const cityAmountJSON = await cityAmountResponse.json();
   const cityAmount = cityAmountJSON.data.length;
-  console.log(cityAmountResponse)
 
   const quickscanAmountResponse = await fetch(baseURL + "?aggregate[count]=*");
   const quickscanAmountJSON = await quickscanAmountResponse.json();
@@ -112,39 +112,6 @@ app.post(
   },
 );
 
-app.get("/:city/:address", async function (req, res) {
-  const params = {
-    "filter[address][_eq]": req.params.address,
-  };
-
-  const quickscanDetailResponse = await fetch(
-    baseURL + "?" + new URLSearchParams(params),
-  );
-
-  const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
-  const quickscanDetailData = quickscanDetailResponseJSON.data;
-
-  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
-  const cityResponseJSON = await cityResponse.json();
-  const cityData = cityResponseJSON.data;
-
-  res.render("detail.liquid", {
-    quickscanDetails: quickscanDetailData,
-    cities: cityData,
-  });
-});
-
-app.post("/:city/quickscan-delete", async function (req, res) {
-  const id = req.body.id;
-  const city = req.params.city;
-
-  await fetch(baseURL + "/" + id, {
-    method: "DELETE",
-  });
-
-  res.redirect(303, "/" + city);
-});
-
 app.get("/:city", async function (req, res) {
   const params = {
     "filter[city][_eq]": req.params.city,
@@ -208,6 +175,39 @@ app.get("/:city", async function (req, res) {
     quickscans: quickscanData,
     cities: cityData,
   });
+});
+
+app.get("/:city/:address", async function (req, res) {
+  const params = {
+    "filter[address][_eq]": req.params.address,
+  };
+
+  const quickscanDetailResponse = await fetch(
+    baseURL + "?" + new URLSearchParams(params),
+  );
+
+  const quickscanDetailResponseJSON = await quickscanDetailResponse.json();
+  const quickscanDetailData = quickscanDetailResponseJSON.data;
+
+  const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
+  const cityResponseJSON = await cityResponse.json();
+  const cityData = cityResponseJSON.data;
+
+  res.render("detail.liquid", {
+    quickscanDetails: quickscanDetailData,
+    cities: cityData,
+  });
+});
+
+app.post("/:city/quickscan-delete", async function (req, res) {
+  const id = req.body.id;
+  const city = req.params.city;
+
+  await fetch(baseURL + "/" + id, {
+    method: "DELETE",
+  });
+
+  res.redirect(303, "/" + city);
 });
 
 app.set("port", process.env.PORT || 8000);
