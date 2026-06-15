@@ -1,6 +1,7 @@
 const menuButton = document.querySelector(".menu");
 const menuNav = document.querySelector(".menu-nav");
 
+// Opent en sluit het hamburgermenu
 menuButton.addEventListener("click", function () {
   menuNav.classList.toggle("clicked");
   menuButton.classList.toggle("clicked");
@@ -9,6 +10,7 @@ menuButton.addEventListener("click", function () {
 const submitButton = document.querySelector(".submit-button");
 const quickscanForm = document.querySelector(".quickscan-form");
 
+// Voegt een laad- en successstatus toe
 quickscanForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -26,6 +28,7 @@ quickscanForm.addEventListener("submit", async function (event) {
   submitButton.classList.add("success");
   submitButton.textContent = "Added!";
 
+  // Haalt de successstatus weg en ververst de pagina om het formulier te legen
   setTimeout(() => {
     submitButton.classList.remove("success");
     submitButton.textContent = "Submit";

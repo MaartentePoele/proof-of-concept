@@ -1,8 +1,8 @@
 import express from "express";
 import { Liquid } from "liquidjs";
 import multer from "multer";
-const upload = multer({ storage: multer.memoryStorage() });
 
+const upload = multer({ storage: multer.memoryStorage() });
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -12,6 +12,7 @@ app.set("views", "./views");
 
 const baseURL = "https://fdnd-agency.directus.app/items/ctc_smartzone";
 
+// De homepagina met stats
 app.get("/", async function (req, res) {
   const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
   const cityResponseJSON = await cityResponse.json();
@@ -52,6 +53,7 @@ app.get("/", async function (req, res) {
   });
 });
 
+// Quickscanpagina
 app.get("/quickscan", async function (req, res) {
   const cityResponse = await fetch(baseURL + "?fields=city&groupBy=city");
   const cityResponseJSON = await cityResponse.json();
@@ -62,6 +64,7 @@ app.get("/quickscan", async function (req, res) {
   });
 });
 
+// POST om de quickscans naar de database te sturen
 app.post(
   "/quickscan-post",
   upload.single("picture"),
@@ -112,6 +115,7 @@ app.post(
   },
 );
 
+// Stadpagina met stats en een quickscanoverzicht
 app.get("/:city", async function (req, res) {
   const params = {
     "filter[city][_eq]": req.params.city,
@@ -177,6 +181,7 @@ app.get("/:city", async function (req, res) {
   });
 });
 
+// Detailpagina van de quickscans
 app.get("/:city/:address", async function (req, res) {
   const params = {
     "filter[address][_eq]": req.params.address,
@@ -199,6 +204,7 @@ app.get("/:city/:address", async function (req, res) {
   });
 });
 
+// POST om een quickscan te kunnen verwijderen
 app.post("/:city/quickscan-delete", async function (req, res) {
   const id = req.body.id;
   const city = req.params.city;
