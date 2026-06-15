@@ -33,7 +33,21 @@
         {% if quickscan.picture == null %}
           <img src="/assets/images/fallback.png" alt="">
         {% else %}
-          <img class="quickscan-img" src="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}" alt="">
+          <picture>
+            <source
+              srcset="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}?format=avif&width=150"
+              type="image/avif"
+            >
+            <source
+              srcset="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}?format=webp&width=150"
+              type="image/webp"
+            >
+            <img
+              class="quickscan-img"
+              src="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}?format=avif&width=150"
+              alt=""
+            >
+          </picture>
         {% endif %}
         <h4 class="quickscan-heading">
           <a href="/{{ quickscan.city }}/{{ quickscan.address }}">{{ quickscan.address }}</a>
