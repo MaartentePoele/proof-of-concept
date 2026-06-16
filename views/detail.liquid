@@ -4,7 +4,7 @@
 
   <div class="quickscan-detail-card">
     {%- if quickscanDetails[0].picture == null %}
-      <img src="/assets/images/fallback.png" alt="">
+      <img src="/assets/images/fallback.png" alt="" width="700" height="525">
     {%- else %}
       <picture>
         <source
@@ -15,10 +15,11 @@
           type="image/webp">
         <img
           class="quickscan-img"
-          src="https://fdnd-agency.directus.app/assets/{{ quickscanDetails[0].picture }}"
+          src="https://fdnd-agency.directus.app/assets/{{ quickscanDetails[0].picture }}&width=700"
           alt=""
           style="view-transition-name: quickscan-img-{{ quickscanDetails[0].id }};"
-          width="700">
+          width="700"
+          height="525">
       </picture>
     {%- endif %}
     <h1>{{ quickscanDetails[0].address }}</h1>

@@ -5,24 +5,24 @@
       <section class="dashboard">
         <h1>Dashboard {{ pathTitle }}</h1>
 
-        <div class="dashboard-boxes">
+        <dl class="dashboard-boxes">
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Smart zone geschiktheid</h2>
-            <span class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</span>
+            <dt class="dashboard-box-heading">Smart zone geschiktheid</dt>
+            <dd class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</dd>
           </div>
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Gem. lengte smartzone</h2>
-            <span class="dashboard-box-value">{{ averageLength | round: 1 }}m</span>
+            <dt class="dashboard-box-heading">Gem. lengte smartzone</dt>
+            <dd class="dashboard-box-value">{{ averageLength | round: 1 }}m</dd>
           </div>
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">In overtreding</h2>
-            <span class="dashboard-box-value">{{ overtredingPercentage | round }}%</span>
+            <dt class="dashboard-box-heading">In overtreding</dt>
+            <dd class="dashboard-box-value">{{ overtredingPercentage | round }}%</dd>
           </div>
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Quickscans</h2>
-            <span class="dashboard-box-value">{{ quickscanAmount.count }}</span>
+            <dt class="dashboard-box-heading">Quickscans</dt>
+            <dd class="dashboard-box-value">{{ quickscanAmount.count }}</dd>
           </div>
-        </div>
+        </dl>
       </section>
 
       <section class="quickscans">
@@ -30,7 +30,7 @@
       {% for quickscan in quickscans %}
         <article>
         {%- if quickscan.picture == null %}
-          <img src="/assets/images/fallback.png" alt="">
+          <img src="/assets/images/fallback.png" alt="" width="130" height="87">
         {%- else %}
           <picture>
             <source
@@ -43,7 +43,9 @@
               class="quickscan-img"
               src="https://fdnd-agency.directus.app/assets/{{ quickscan.picture }}?format=avif&width=150"
               alt=""
-              style="view-transition-name: quickscan-img-{{ quickscan.id }};">
+              style="view-transition-name: quickscan-img-{{ quickscan.id }};"
+              width="130"
+              height="87">
           </picture>
         {% endif %}
           <h4 class="quickscan-heading">

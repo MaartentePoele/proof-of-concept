@@ -16,12 +16,6 @@ header {
     translate: 0 -100%;
   }
 
-  .logo {
-    img {
-      width: 150px;
-    }
-  }
-
   .menu {
     aspect-ratio: 1;
     background: none;
@@ -141,6 +135,7 @@ header {
         color: var(--accent-color);
         font-size: 1rem;
         text-transform: uppercase;
+        font-weight: bold;
       }
 
       .dashboard-box-value {

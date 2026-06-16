@@ -3,25 +3,24 @@
       <section class="dashboard">
         <h1>Dashboard Nederland</h1>
 
-        <div class="dashboard-boxes">
+        <dl class="dashboard-boxes">
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Smart zone geschiktheid</h2>
-            <span class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</span>
+            <dt class="dashboard-box-heading">Smart zone geschiktheid</dt>
+            <dd class="dashboard-box-value">{{ smartzoneGeschiktPercentage | round }}%</dd>
           </div>
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">In overtreding</h2>
-            <span class="dashboard-box-value">{{ overtredingPercentage | round }}%</span>
+            <dt class="dashboard-box-heading">In overtreding</dt>
+            <dd class="dashboard-box-value">{{ overtredingPercentage | round }}%</dd>
           </div>
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Quickscans</h2>
-            <span class="dashboard-box-value">{{ quickscanAmount.count }}</span>
+            <dt class="dashboard-box-heading">Quickscans</dt>
+            <dd class="dashboard-box-value">{{ quickscanAmount.count }}</dd>
           </div>
-
           <div class="dashboard-box">
-            <h2 class="dashboard-box-heading">Steden</h2>
-            <span class="dashboard-box-value">{{ cityAmount }}</span>
+            <dt class="dashboard-box-heading">Steden</dt>
+            <dd class="dashboard-box-value">{{ cityAmount }}</dd>
           </div>
-        </div>
+        </dl>
       </section>
 
       <nav class="city-nav">
