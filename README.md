@@ -3,7 +3,7 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
 
 # Coding the Curbs Dashboard
 <!-- Geef je project een titel en schrijf in één zin wat het is -->
-Makkelijk aanmaken van Quickscans die weer worden gegeven in een overzichtelijk dashboard.
+Makkelijk aanmaken van Quickscans die worden weergegeven in een overzichtelijk dashboard.
 
 ## Inhoudsopgave
 
