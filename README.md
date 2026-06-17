@@ -28,12 +28,9 @@ Op de homepagina krijg je 4 statestieken te zien over alle quickscans van alle s
 Via de 'nieuwe quickscan' knop nagiveer je naar een formulier.
 
 <img width="348" height="456" alt="image" src="https://github.com/user-attachments/assets/572c1a53-6a61-4c89-89f6-00fba4c9b8cb" />
-Dan kan de gebruiker allerlei informatie invoeren over een locatie.
+Dan kan de gebruiker allerlei informatie invoeren over een locatie en het versturen naar de database. Dit is een voorbeeld van een quickscan:
 
 <img width="426" height="867" alt="image" src="https://github.com/user-attachments/assets/7a569d04-e2b5-4990-8166-ecbc90b74098" />
-En het versturen naar de database. 
-Voorbeeld van een quickscan:
-![Uploading image.png…]()
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
