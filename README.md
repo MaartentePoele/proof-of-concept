@@ -55,6 +55,12 @@ https://github.com/user-attachments/assets/74902ef6-1df3-4be8-8798-dcb21d0f5e19
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
+### Code conventies
+Ademruimte en inspringen van HTML:
+https://github.com/MaartentePoele/proof-of-concept/blob/0536f677a8011fe91cf1ec0ec5188e9bce463daf/views/index.liquid#L3-L24
+
+Nesting van CSS & media queries:
+https://github.com/MaartentePoele/proof-of-concept/blob/0536f677a8011fe91cf1ec0ec5188e9bce463daf/public/assets/styles/style.css#L97-L148
 
 ## Licentie
 
