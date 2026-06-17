@@ -49,6 +49,9 @@ De website is ook responsive gemaakt voor verschillende schermgroottes:
 ### Desktop
 <img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/b1cbf917-c9a3-4bb5-a59b-600256f06ce3" />
 
+Als laatst heb ik ook verschillende User Interface States gebruikt om feedback te geven aan de gebruiker met het sturen van het forumulier naar de database:
+
+https://github.com/user-attachments/assets/74902ef6-1df3-4be8-8798-dcb21d0f5e19
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
